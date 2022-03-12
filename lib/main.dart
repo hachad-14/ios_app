@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to flutter',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Welcome to flutter'),
+          title: Text('Apps Openner'),
         ),
         body: Center(
           child: RaisedButton(
@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
             textColor: Colors.white,
             onPressed: () async {
               await LaunchApp.openApp(
-                    androidPackageName: 'net.pulsesecure.pulsesecure',
-                    iosUrlScheme: 'instagram://',
-                    appStoreLink: 'itms-apps://itunes.apple.com/us/app/pulse-secure/id945832041',
+                  androidPackageName: 'net.facebook.instagram',
+                  iosUrlScheme: 'instagram://',
+                  appStoreLink: 'itms-apps://itunes.apple.com',
               );
                     print('Zabbbbiiiii');
             },
