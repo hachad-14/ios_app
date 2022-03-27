@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
 
@@ -7,20 +9,35 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to flutter',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.grey,
         appBar: AppBar(
+
+          centerTitle: true,
           title: Text('Apps Openner'),
+          leading: Icon(
+            Icons.signal_cellular_alt,
+            size: 30,
+          ),
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(30),
+              bottom: Radius.circular(30)
+            ),
+          ),
         ),
         body: Center(
-          child: RaisedButton(
-            color: Colors.blue,
+          child: FlatButton(
+            color: Colors.black,
             textColor: Colors.white,
             onPressed: () async {
               await LaunchApp.openApp(
-                  androidPackageName: 'net.facebook.instagram',
+                  androidPackageName: 'com.instagram.android',
                   iosUrlScheme: 'instagram://',
-                  appStoreLink: 'itms-apps://itunes.apple.com',
+                  appStoreLink: 'itms-apps://itunes.apple.com/intagram',
               );
                     print('Zabbbbiiiii');
             },
@@ -30,20 +47,6 @@ class MyApp extends StatelessWidget {
             )
           ),
         ),
-      ),
-    );
-  }
-}
-
-class Square extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container (
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.blueAccent,
       ),
     );
   }
