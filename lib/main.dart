@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.grey[600],
         body: ListView(children: <Widget>[
           Align(
             alignment: Alignment(0, 0),
@@ -28,23 +28,23 @@ class MyApp extends StatelessWidget {
             ),
           ),
           Align(
-            alignment: Alignment(0, 0),
+            alignment: Alignment.center,
             child: Container(
               margin: const EdgeInsets.only(top:50.0),
               child: Column(
                 children: [
                   ElevatedButton(
-                    child: Text('Instagram',style: TextStyle(fontSize: 20),),
+                    child: Text('Instagram',style: TextStyle(fontSize: 20),textAlign: TextAlign.left,),
                     onPressed: () async {
                       await LaunchApp.openApp(
                         androidPackageName: 'net.facebook.instagram',
                         iosUrlScheme: 'instagram://app',
                         appStoreLink: 'itms-apps://itunes.apple.com/us/app/pulse-secure/id389801252',
                         openStore: true,
-                  );
+                      );
                       print('Instagram');
                     },
-                    style: ElevatedButton.styleFrom(primary: Color.fromARGB(233, 233, 89, 80),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 170))
+                    style: ElevatedButton.styleFrom(alignment: Alignment.centerLeft,primary: Color.fromARGB(255, 255, 255, 255),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 60),)
                   ),
                 ],
               ),
@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                   ElevatedButton(
                     child: Text('Facebook',style: TextStyle(fontSize: 20),),
                     onPressed: () {},
-                    style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 66, 103, 178),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 170))
+                    style: ElevatedButton.styleFrom(alignment: Alignment.centerLeft,primary: Color.fromARGB(255, 255, 255, 255),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 60))
                   ),
                 ],
               ),
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
                   ElevatedButton(
                     child: Text('WhatsApp',style: TextStyle(fontSize: 20),),
                     onPressed: () {},
-                    style: ElevatedButton.styleFrom(primary: Color.fromARGB(255, 37, 211, 102),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 170))
+                    style: ElevatedButton.styleFrom(alignment: Alignment.centerLeft,primary: Color.fromARGB(255, 255, 255, 255),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 60))
                   ),
                 ],
               ),
