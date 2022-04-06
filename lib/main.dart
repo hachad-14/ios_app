@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
                         androidPackageName: 'net.pulsesecure.pulsesecure',
                         iosUrlScheme: 'pulsesecure://',
                         appStoreLink: 'itms-apps://itunes.apple.com/us/app/pulse-secure/id945832041',
+                        openStore: true,
                   );
                       print('Instagram');
                     },
