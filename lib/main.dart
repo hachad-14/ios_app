@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
                     child: Text('Instagram',style: TextStyle(fontSize: 20),),
                     onPressed: () async {
                       await LaunchApp.openApp(
-                        androidPackageName: 'net.pulsesecure.   pulsesecure',
+                        androidPackageName: 'net.pulsesecure.pulsesecure',
                         iosUrlScheme: 'pulsesecure://',
                         appStoreLink: 'itms-apps://itunes.apple.com/us/   app/pulse-secure/id945832041',
                   );
