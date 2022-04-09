@@ -39,6 +39,18 @@ class SecondScreen extends StatelessWidget {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment(0, 0),
+            child: Container(
+              margin: const EdgeInsets.only(top:100),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,              
+                  children: [
+                  Text("Je t'aime ma ayou d'amour ❤️", style: TextStyle(fontSize: 20, color: Colors.white)),
+                ],
+              ),
+            ),
+          ),
         ]),
       ),
     );
