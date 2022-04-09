@@ -1,8 +1,16 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
+import 'package:page_transition/page_transition.dart';
 
-void main() => runApp(MyApp());
+import 'mainScreen.dart';
+
+void main() => runApp(MaterialApp(
+  title: "HomePage",
+  home: MyApp(),
+  debugShowCheckedModeBanner: false,
+  )
+);
 
 class MyApp extends StatelessWidget {
   @override
@@ -57,8 +65,20 @@ class MyApp extends StatelessWidget {
               child: Column(
                 children: [
                   ElevatedButton(
-                    child: Text('Facebook',style: TextStyle(fontSize: 20),),
-                    onPressed: () {},
+                    child: Text('Deuxieme page',style: TextStyle(fontSize: 20),),
+                    onPressed: () {
+                      Navigator.push(context,
+                      //CupertinoPageRoute(builder: (context) => SecondScreen()));
+                      PageTransition(
+                        child: SecondScreen(),
+                        type: PageTransitionType.rightToLeft,
+                        //duration: Duration(milliseconds: 250),
+                        inheritTheme: true,
+                        ctx: context
+                        ),
+                      );
+                      print("js");
+                    },
                     style: ElevatedButton.styleFrom(alignment: Alignment.centerLeft,primary: Color.fromARGB(255, 255, 255, 255),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 60))
                   ),
                 ],
