@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:page_transition/page_transition.dart';
 
 import 'main.dart';
