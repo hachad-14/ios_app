@@ -28,10 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.2
-  external_app_launcher: ^2.0.2
-  firebase: ^9.0.2
-  firebase_core: ^1.14.0
-  firebase_installations: ^16.3.6
+  external_app_launcher: ^2.0.26.3.6
   flutter:
     sdk: flutter
   page_transition: ^2.0.5
