@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
-import 'package:page_transition/page_transition.dart';
 
 import 'mainScreen.dart';
 
@@ -68,14 +68,14 @@ class MyApp extends StatelessWidget {
                     child: Text('Deuxieme page',style: TextStyle(fontSize: 20),),
                     onPressed: () {
                       Navigator.push(context,
-                      //CupertinoPageRoute(builder: (context) => SecondScreen()));
-                      PageTransition(
-                        child: SecondScreen(),
-                        type: PageTransitionType.rightToLeft,
-                        //duration: Duration(milliseconds: 250),
-                        inheritTheme: true,
-                        ctx: context
-                        ),
+                      CupertinoPageRoute(builder: (context) => SecondScreen())
+                      //PageTransition(
+                      //  child: SecondScreen(),
+                      //  type: PageTransitionType.rightToLeft,
+                      //  //duration: Duration(milliseconds: 250),
+                      //  inheritTheme: true,
+                      //  ctx: context
+                      //  ),
                       );
                       print("js");
                     },

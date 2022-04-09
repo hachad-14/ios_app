@@ -31,7 +31,6 @@ dependencies:
   external_app_launcher: ^2.0.2
   flutter:
     sdk: flutter
-  page_transition: ^2.0.5
 
 dev_dependencies:
   flutter_lints: ^1.0.0
