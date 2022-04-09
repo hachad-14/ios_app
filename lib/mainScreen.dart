@@ -28,16 +28,7 @@ class SecondScreen extends StatelessWidget {
                     IconButton(
                       icon: Icon(Icons.arrow_back_ios),
                       onPressed: () {
-                        Navigator.push(context,
-                        //CupertinoPageRoute(builder: (context) => SecondScreen()));
-                        PageTransition(
-                          child: MyApp(),
-                          type: PageTransitionType.leftToRight,
-                          duration: Duration(milliseconds: 250),
-                          inheritTheme: true,
-                          ctx: context
-                          ),
-                        );
+                        Navigator.pop(context);
                       },
                     ),
                     Padding(
