@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:external_app_launcher/external_app_launcher.dart';
 
 import 'mainScreen.dart';
+import 'secondScreen.dart';
 
 void main() => runApp(MaterialApp(
   title: "HomePage",
@@ -69,13 +70,6 @@ class MyApp extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                       CupertinoPageRoute(builder: (context) => SecondScreen())
-                      //PageTransition(
-                      //  child: SecondScreen(),
-                      //  type: PageTransitionType.rightToLeft,
-                      //  //duration: Duration(milliseconds: 250),
-                      //  inheritTheme: true,
-                      //  ctx: context
-                      //  ),
                       );
                       print("js");
                     },
@@ -92,8 +86,12 @@ class MyApp extends StatelessWidget {
               child: Column(
                 children: [
                   ElevatedButton(
-                    child: Text('WhatsApp',style: TextStyle(fontSize: 20),),
-                    onPressed: () {},
+                    child: Text('Troisieme Page',style: TextStyle(fontSize: 20),),
+                    onPressed: () {
+                      Navigator.push(context,
+                      CupertinoPageRoute(builder: (context) => ThirdScreen())
+                      );
+                    },
                     style: ElevatedButton.styleFrom(alignment: Alignment.centerLeft,primary: Color.fromARGB(255, 255, 255, 255),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 60))
                   ),
                 ],

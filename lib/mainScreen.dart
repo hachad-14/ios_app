@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 
-import 'main.dart';
-
 class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
