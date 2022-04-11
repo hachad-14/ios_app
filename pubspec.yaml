@@ -29,6 +29,7 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   external_app_launcher: ^2.0.2
+  local_auth: ^1.1.11
   flutter:
     sdk: flutter
 
@@ -41,6 +42,8 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
 flutter:
+  assets:
+    - assets/images/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

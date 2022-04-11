@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 
-class SecondScreen extends StatelessWidget {
+class locationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,17 +21,17 @@ class SecondScreen extends StatelessWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,              
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.arrow_back_ios),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 120, left: 80),
-                      child: Text("Apps Opener", style: TextStyle(fontSize: 20),),
-                    ),
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 120, left: 80),
+                    child: Text("Preject b0.1", style: TextStyle(fontSize: 20),),
+                  ),
                 ],
               ),
             ),

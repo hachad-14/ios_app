@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:external_app_launcher/external_app_launcher.dart';
 
-import 'mainScreen.dart';
-import 'secondScreen.dart';
+import 'location.dart';
+import 'local_auth_api.dart';
 
 void main() => runApp(MaterialApp(
   title: "HomePage",
@@ -32,67 +31,89 @@ class MyApp extends StatelessWidget {
               boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
               ),
               child: Center(
-                child: Text('Apps Opener',style: TextStyle(fontSize: 20),),
+                child: Text('Project b0.1',style: TextStyle(fontSize: 20),),
               ),
             ),
           ),
           Align(
-            alignment: Alignment.center,
+            //location//
+            alignment: Alignment(-0.9, 0),
             child: Container(
-              margin: const EdgeInsets.only(top:50.0),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,              
                 children: [
-                  ElevatedButton(
-                    child: Text('Instagram',style: TextStyle(fontSize: 20),textAlign: TextAlign.left,),
-                    onPressed: () async {
-                      await LaunchApp.openApp(
-                        androidPackageName: 'net.facebook.instagram',
-                        iosUrlScheme: 'instagram://app',
-                        appStoreLink: 'itms-apps://itunes.apple.com/us/app/pulse-secure/id389801252',
-                        openStore: true,
-                      );
-                      print('Instagram');
-                    },
-                    style: ElevatedButton.styleFrom(alignment: Alignment.centerLeft,primary: Color.fromARGB(255, 255, 255, 255),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 60),)
+                  Container(
+                    margin: const EdgeInsets.only(top:50),
+                    height: 180,
+                    width: 180,
+                    decoration:
+                    BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
+                      boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
+                    ),
+                    child: InkWell(
+                      onTap: () async {
+                        final isAuthentificated = await LocalAuthApi.authenticate();
+                        if (isAuthentificated) {
+                          Navigator.push(context,
+                            CupertinoPageRoute(builder:(context) => locationScreen()),
+                          );
+                        }
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,    
+                        children: [
+                          Text("Location", style: TextStyle(fontSize: 20)),
+                          Padding(
+                            padding: EdgeInsets.only(top: 0),
+                            child: Image.asset('assets/images/location.png',fit: BoxFit.cover,height: 100,),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Container(
+                      child: Text("Test", style: TextStyle(),textAlign: TextAlign.center,),
+                      margin: const EdgeInsets.only(top:50),
+                      height: 180,
+                      width: 180,
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
+                      boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1))]
+                    ),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          Align(
-            alignment: Alignment(0, 0),
+           Align(
+            alignment: Alignment(-0.9, 0),
             child: Container(
-              margin: const EdgeInsets.only(top:20.0),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,              
                 children: [
-                  ElevatedButton(
-                    child: Text('Deuxieme page',style: TextStyle(fontSize: 20),),
-                    onPressed: () {
-                      Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => SecondScreen())
-                      );
-                      print("js");
-                    },
-                    style: ElevatedButton.styleFrom(alignment: Alignment.centerLeft,primary: Color.fromARGB(255, 255, 255, 255),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 60))
+                  Container(
+                    child: Text("Test", style: TextStyle(),textAlign: TextAlign.center,),
+                    margin: const EdgeInsets.only(top:20),
+                    height: 180,
+                    width: 180,
+                    decoration:
+                    BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
+                    boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
+                    ),
                   ),
-                ],
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment(0, 0),
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 20,top: 20,),
-              child: Column(
-                children: [
-                  ElevatedButton(
-                    child: Text('Troisieme Page',style: TextStyle(fontSize: 20),),
-                    onPressed: () {
-                      Navigator.push(context,
-                      CupertinoPageRoute(builder: (context) => ThirdScreen())
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(alignment: Alignment.centerLeft,primary: Color.fromARGB(255, 255, 255, 255),onPrimary: Colors.black,elevation: 2,minimumSize: const Size(380, 60))
+                  Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Container(
+                      child: Text("Test", style: TextStyle(),textAlign: TextAlign.center,),
+                      margin: const EdgeInsets.only(top:20),
+                      height: 180,
+                      width: 180,
+                      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
+                      boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1))]
+                    ),
+                    ),
                   ),
                 ],
               ),
