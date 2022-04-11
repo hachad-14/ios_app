@@ -29,9 +29,11 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   external_app_launcher: ^2.0.2
-  local_auth: ^1.1.11
   flutter:
     sdk: flutter
+  geolocator: ^8.2.0
+  local_auth: ^1.1.11
+  url_launcher: ^6.0.20
 
 dev_dependencies:
   flutter_lints: ^1.0.0
