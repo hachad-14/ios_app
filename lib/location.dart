@@ -46,6 +46,12 @@ class locationScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,              
                   children: [
                   Text("Je t'aime ma ayou d'amour ❤️", style: TextStyle(fontSize: 20, color: Colors.white)),
+                  ElevatedButton(
+                    child: null,
+                    onPressed: () {
+                      GetLocation.foo();
+                    },
+                  ),
                 ],
               ),
             ),
