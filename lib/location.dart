@@ -1,9 +1,57 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_null_comparison
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'api/location_api.dart';
 
-class locationScreen extends StatelessWidget {
+class LocationScreenApi extends StatefulWidget {
+  @override
+  LocationScreen createState() => LocationScreen();
+}
+
+class LocationScreen extends State<LocationScreenApi> {
+
+  String currentAdress = "Mon Adresse";
+  late Position currentposition;
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if(!serviceEnabled) {
+      Fluttertoast.showToast(msg: 'Activez votre localisation');
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        Fluttertoast.showToast(msg: "Votre localisation n'est pas activée");
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      Fluttertoast.showToast(msg: 'Permisson is denied for ever');
+    }
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high
+    );
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+      Placemark place =  placemarks[0];
+      setState(() {
+        currentposition = position;
+        currentAdress = "${place.locality}, ${place.postalCode}, ${place.country}";
+      });
+    } catch (e) {
+      print(e);
+    }
+    throw(e);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,11 +93,14 @@ class locationScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,              
                   children: [
-                  Text("Je t'aime ma ayou d'amour ❤️", style: TextStyle(fontSize: 20, color: Colors.white)),
+                  Text("Vous êtes actuellement au :", style: TextStyle(fontSize: 20, color: Colors.white)),
+                  Text(currentAdress),
+                  currentposition!=null? Text("Latitude" + currentposition.latitude.toString()):Container(),
+                  currentposition!=null? Text("Longitude" + currentposition.longitude.toString()):Container(),
                   ElevatedButton(
-                    child: null,
+                    child: Text("Localiser"),
                     onPressed: () {
-                      GetLocation.foo();
+                      _determinePosition();
                     },
                   ),
                 ],

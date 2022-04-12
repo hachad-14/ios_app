@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
                         //  );
                         //}
                         Navigator.push(context,
-                           CupertinoPageRoute(builder:(context) => locationScreen()),
+                           CupertinoPageRoute(builder:(context) => LocationScreenApi()),
                         );
                       },
                       child: Column(
