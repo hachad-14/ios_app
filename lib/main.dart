@@ -52,15 +52,12 @@ class MyApp extends StatelessWidget {
                     ),
                     child: InkWell(
                       onTap: () async {
-                        //final isAuthentificated = await LocalAuthApi.authenticate();
-                        //if (isAuthentificated) {
-                        //  Navigator.push(context,
-                        //    CupertinoPageRoute(builder:(context) => locationScreen()),
-                        //  );
-                        //}
-                        Navigator.push(context,
-                           CupertinoPageRoute(builder:(context) => LocationScreenApi()),
-                        );
+                        final isAuthentificated = await LocalAuthApi.authenticate();
+                        if (isAuthentificated) {
+                          Navigator.push(context,
+                            CupertinoPageRoute(builder:(context) => locationScreen()),
+                          );
+                        }
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,    
