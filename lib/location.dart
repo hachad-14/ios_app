@@ -16,7 +16,8 @@ class LocationScreenApi extends StatefulWidget {
 class LocationScreen extends State<LocationScreenApi> {
 
   String currentAdress = "Mon Adresse";
-  late Position currentposition;
+  Position? currentposition;
+  
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -95,8 +96,8 @@ class LocationScreen extends State<LocationScreenApi> {
                   children: [
                   Text("Vous êtes actuellement au :", style: TextStyle(fontSize: 20, color: Colors.white)),
                   Text(currentAdress),
-                  currentposition!=null? Text("Latitude" + currentposition.latitude.toString()):Container(),
-                  currentposition!=null? Text("Longitude" + currentposition.longitude.toString()):Container(),
+                  currentposition!=null? Text("Latitude" + currentposition!.latitude.toString()):Container(),
+                  currentposition!=null? Text("Longitude" + currentposition!.longitude.toString()):Container(),
                   ElevatedButton(
                     child: Text("Localiser"),
                     onPressed: () {
