@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
                         final isAuthentificated = await LocalAuthApi.authenticate();
                         if (isAuthentificated) {
                           Navigator.push(context,
-                            CupertinoPageRoute(builder:(context) => LocationScreenApi()),
+                            CupertinoPageRoute(builder:(context) => LocationScreen()),
                           );
                         }
                       },

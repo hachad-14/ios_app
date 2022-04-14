@@ -5,19 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'api/location_api.dart';
-
-class LocationScreenApi extends StatefulWidget {
+class LocationScreen extends StatefulWidget {
   @override
-  LocationScreen createState() => LocationScreen();
+  LocationScreenApi createState() => LocationScreenApi();
 }
 
-class LocationScreen extends State<LocationScreenApi> {
+class LocationScreenApi extends State<LocationScreen> {
+
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
 
   String currentAdress = "Mon Adresse";
   Position? currentposition;
-  
 
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
@@ -51,7 +57,7 @@ class LocationScreen extends State<LocationScreenApi> {
       print(e);
     }
     throw(e);
-  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +110,30 @@ class LocationScreen extends State<LocationScreenApi> {
                       _determinePosition();
                     },
                   ),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment(0, 0),
+            child: Container(
+              margin: const EdgeInsets.only(top:30.0),
+              height: 200,
+              width: 380,
+              decoration:
+              BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
+              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,              
+                children: [
+                  GoogleMap(
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                      target: _center,
+                      zoom: 11.0,
+                    ),
+                  )
                 ],
               ),
             ),
