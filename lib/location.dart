@@ -5,9 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import '../src/locations.dart' as locations;
 
 class LocationScreen extends StatefulWidget {
   @override
@@ -15,25 +12,6 @@ class LocationScreen extends StatefulWidget {
 }
 
 class LocationScreenApi extends State<LocationScreen> {
-
-  final Map<String, Marker> _markers = {};
-  Future<void> _onMapCreated(GoogleMapController controller) async {
-    final googleOffices = await locations.getGoogleOffices();
-    setState(() {
-      _markers.clear();
-      for (final office in googleOffices.offices) {
-        final marker = Marker(
-          markerId: MarkerId(office.name),
-          position: LatLng(office.lat, office.lng),
-          infoWindow: InfoWindow(
-            title: office.name,
-            snippet: office.address,
-          ),
-        );
-        _markers[office.name] = marker;
-      }
-    });
-  }
 
   String currentAdress = "Mon Adresse";
   Position? currentposition;
@@ -64,7 +42,7 @@ class LocationScreenApi extends State<LocationScreen> {
       Placemark place =  placemarks[0];
       setState(() {
         currentposition = position;
-        currentAdress = "${place.locality}, ${place.postalCode}, ${place.country}";
+        currentAdress = "${place.locality}, ${place.street}, ${place.postalCode}, ${place.country}";
       });
     } catch (e) {
       print(e);
@@ -140,14 +118,7 @@ class LocationScreenApi extends State<LocationScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,              
                 children: [
-                  GoogleMap(
-                    onMapCreated: _onMapCreated,
-                    initialCameraPosition: const CameraPosition(
-                      target: LatLng(0, 0),
-                      zoom: 2,
-                    ),
-                    markers: _markers.values.toSet(),
-                  )
+                  Text("of")
                 ],
               ),
             ),
