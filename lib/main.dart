@@ -13,6 +13,7 @@ void main() => runApp(MaterialApp(
 );
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,15 +53,12 @@ class MyApp extends StatelessWidget {
                     ),
                     child: InkWell(
                       onTap: () async {
-                        //final isAuthentificated = await LocalAuthApi.authenticate();
-                        //if (isAuthentificated) {
-                        //  Navigator.push(context,
-                        //    CupertinoPageRoute(builder:(context) => LocationScreen()),
-                        //  );
-                        //}
-                        Navigator.push(context,
-                           CupertinoPageRoute(builder:(context) => LocationScreen()),
-                        );
+                        final isAuthentificated = await LocalAuthApi.authenticate();
+                        if (isAuthentificated) {
+                          Navigator.push(context,
+                            CupertinoPageRoute(builder:(context) => LocationScreen()),
+                          );
+                        }
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,    

@@ -53,13 +53,19 @@ class LocationScreenApi extends State<LocationScreen> {
     throw(e);
 }
 
+  double c1_height = 200;
+  double c1_width = 380;
+
+  double c2_height = 100;
+  double c2_width = 380;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey[600],
-        body: ListView(children: <Widget>[
+        body: ListView(children: <Widget>[ 
           Align(
             alignment: Alignment(0, 0),
             child: Container(
@@ -89,17 +95,15 @@ class LocationScreenApi extends State<LocationScreen> {
           ),
           Align(
             alignment: Alignment(0, 0),
-            child: Container(
-              height: 100,
-              width: 380,
-              constraints: BoxConstraints(
-                maxHeight: double.infinity,
-              ),
+            child: AnimatedContainer(
+              margin: const EdgeInsets.only(top:100.0),
+              height: c2_height,
+              width: c2_width,
               decoration:
               BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
                 boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
               ),
-              margin: const EdgeInsets.only(top:100),
+              duration: const Duration(milliseconds: 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,              
                   children: [
@@ -109,8 +113,12 @@ class LocationScreenApi extends State<LocationScreen> {
                   currentposition!=null? Text("Longitude" + currentposition!.longitude.toString()):Container(),
                   ElevatedButton(
                     child: Text("Localiser"),
-                    onPressed: () {
+                    onPressed: () async {
                       _determinePosition();
+                      setState(() {
+                        c2_height = 130.toDouble();
+                        c2_width = 380.toDouble();
+                      });
                     },
                   ),
                 ],
@@ -119,25 +127,21 @@ class LocationScreenApi extends State<LocationScreen> {
           ),
           Align(
             alignment: Alignment(0, 0),
-            child: Container(
+            child: AnimatedContainer(
               margin: const EdgeInsets.only(top:30.0),
-              height: 200,
-              width: 380,
+              height: c1_height,
+              width: c1_width,
               decoration:
               BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
                 boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
               ),
+              duration: const Duration(seconds: 1),
               child: InkWell(
                 onTap: () async {
-                  try {
-                    child: GoogleMap(
-                      mapType: MapType.normal,
-                      initialCameraPosition: vegasPosition,
-                      myLocationButtonEnabled: true,
-                  );
-                  } catch (e) {
-                    print("fail to put google maps on screen");
-                  }
+                  setState(() {
+                    c1_width = 5.toDouble();
+                    c1_height = 50.toDouble();
+                  });
                 },
               ),
             ),
