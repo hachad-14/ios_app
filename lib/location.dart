@@ -124,10 +124,18 @@ class LocationScreenApi extends State<LocationScreen> {
               BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
                 boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
               ),
-              child: GoogleMap(
-                mapType: MapType.normal,
-                initialCameraPosition: vegasPosition,
-                myLocationButtonEnabled: true,
+              child: InkWell(
+                onTap: () async {
+                  try {
+                    child: GoogleMap(
+                    mapType: MapType.normal,
+                    initialCameraPosition: vegasPosition,
+                    myLocationButtonEnabled: true,
+                  );
+                  } catch (e) {
+                    print("fail to put google maps on screen");
+                  }
+                },
               ),
             ),
           ),
