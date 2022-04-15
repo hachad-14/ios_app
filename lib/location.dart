@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LocationScreen extends StatefulWidget {
   @override
@@ -12,6 +13,8 @@ class LocationScreen extends StatefulWidget {
 }
 
 class LocationScreenApi extends State<LocationScreen> {
+
+  CameraPosition vegasPosition = CameraPosition(target: LatLng(36.0953103, -115.1992098), zoom: 10);
 
   String currentAdress = "Mon Adresse";
   Position? currentposition;
@@ -78,7 +81,7 @@ class LocationScreenApi extends State<LocationScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(right: 120, left: 80),
-                    child: Text("Preject b0.1", style: TextStyle(fontSize: 20),),
+                    child: Text("Project b0.1", style: TextStyle(fontSize: 20),),
                   ),
                 ],
               ),
@@ -87,11 +90,17 @@ class LocationScreenApi extends State<LocationScreen> {
           Align(
             alignment: Alignment(0, 0),
             child: Container(
+              height: 100,
+              width: 380,
+              decoration:
+              BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
+                boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
+              ),
               margin: const EdgeInsets.only(top:100),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,              
                   children: [
-                  Text("Vous êtes actuellement au :", style: TextStyle(fontSize: 20, color: Colors.white)),
+                  Text("Vous êtes actuellement au :", style: TextStyle(fontSize: 20, color: Colors.black)),
                   Text(currentAdress),
                   currentposition!=null? Text("Latitude" + currentposition!.latitude.toString()):Container(),
                   currentposition!=null? Text("Longitude" + currentposition!.longitude.toString()):Container(),
@@ -113,13 +122,12 @@ class LocationScreenApi extends State<LocationScreen> {
               width: 380,
               decoration:
               BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20),
-              boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
+                boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3),spreadRadius: 0.5,blurRadius: 2, offset: Offset(0, 1), )]
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,              
-                children: [
-                  Text("of")
-                ],
+              child: GoogleMap(
+                mapType: MapType.normal,
+                initialCameraPosition: vegasPosition,
+                myLocationButtonEnabled: true,
               ),
             ),
           ),
