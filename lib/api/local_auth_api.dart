@@ -1,6 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:local_auth/local_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:local_auth/error_codes.dart' as local_auth_error;
 
 class LocalAuthApi {
   static final _auth = LocalAuthentication();
@@ -8,7 +9,7 @@ class LocalAuthApi {
   static Future<bool> hasBiometrics() async {
     try {
       return await _auth.canCheckBiometrics;
-    } on PlatformException catch (e) {
+    } on PlatformException {
       return false;
     }
   }
@@ -16,7 +17,7 @@ class LocalAuthApi {
   static Future<List<BiometricType>> getBiometrics() async {
     try {
       return await _auth.getAvailableBiometrics();
-    } on PlatformException catch (e) {
+    } on PlatformException {
       return <BiometricType>[];
     }
   }
@@ -31,7 +32,7 @@ class LocalAuthApi {
         useErrorDialogs: true,
         stickyAuth: true,
       );
-    } on PlatformException catch (e) {
+    } on PlatformException {
       return false;
     }
   }

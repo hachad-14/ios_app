@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_null_comparison
+// ignore_for_file: prefer_const_constructors, unnecessary_null_comparison, non_constant_identifier_names, avoid_print
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -8,6 +8,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LocationScreen extends StatefulWidget {
+  const LocationScreen({Key? key}) : super(key: key);
+
   @override
   LocationScreenApi createState() => LocationScreenApi();
 }
